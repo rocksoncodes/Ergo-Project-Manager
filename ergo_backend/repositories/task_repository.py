@@ -55,7 +55,7 @@ class TaskRepository:
             logger.error(f"Error updating task:{error}")
 
 
-    def delete_task(self, task_id: int) -> None:
+    def destroy_task(self, task_id: int) -> None:
         try:
             with get_session() as task_session:
                 specific_task = task_session.query(Task).filter(Task.id == task_id).first()
