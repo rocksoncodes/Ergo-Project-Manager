@@ -9,7 +9,7 @@ Base = declarative_base()
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
 
-def initialize_database(models):
+def run_migrations(models):
     try:
         for model_key, model_value in models.items():
             model_value.metadata.create_all(bind=engine)

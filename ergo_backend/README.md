@@ -1,3 +1,3 @@
 # Ergo-Task-Manager
 
-A simple task manager in development
+A simple project manager in development...

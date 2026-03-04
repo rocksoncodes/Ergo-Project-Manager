@@ -1,4 +1,4 @@
-from database.database_utils import initialize_database
+from database.database_utils import run_migrations
 from models.task import Base as UserBase
 from models.user import Base as TaskBase
 from models.project import Base as ProjectBase
@@ -11,4 +11,4 @@ models = {
 }
 
 if __name__ == "__main__":
-    initialize_database(models)
+    run_migrations(models)
