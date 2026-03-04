@@ -28,7 +28,7 @@ class ProjectRepository:
             logger.error(f"Error getting project: {error}")
 
 
-    def all_projects(self) -> List[Project]:
+    def get_all_projects(self) -> List[Project]:
         try:
             with get_session() as project_session:
                 every_project = project_session.query(Project).all()
