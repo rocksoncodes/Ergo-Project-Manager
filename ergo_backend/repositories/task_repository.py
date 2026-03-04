@@ -59,7 +59,7 @@ class TaskRepository:
         try:
             with get_session() as task_session:
                 specific_task = task_session.query(Task).filter(Task.id == task_id).first()
-                if specific_task is None:  # ✅ check before deleting
+                if specific_task is None:
                     logger.warning(f"Task {task_id} not found")
                     return
                 task_session.delete(specific_task)
