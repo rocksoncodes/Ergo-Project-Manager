@@ -1,6 +1,6 @@
-from database.database_utils import get_session
+from database.db_utils.database_utils import get_session
 from models.project import Project
-from typing import  Dict, Optional, List
+from typing import  Dict, List
 from utils.logger import logger
 
 class ProjectRepository:

@@ -1,4 +1,4 @@
-from database.database_utils import run_migrations
+from database.db_utils.database_utils import run_migrations
 from models.task import Base as UserBase
 from models.user import Base as TaskBase
 from models.project import Base as ProjectBase
@@ -7,7 +7,7 @@ from models.project import Base as ProjectBase
 models = {
     "User": UserBase,
     "Task": TaskBase,
-    "ProjectBase": ProjectBase
+    "Project": ProjectBase
 }
 
 if __name__ == "__main__":

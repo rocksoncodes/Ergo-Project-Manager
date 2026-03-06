@@ -1,5 +1,5 @@
-from database.database_utils import get_session
-from typing import Dict, Optional, List
+from database.db_utils.database_utils import get_session
+from typing import Dict, List
 from models.task import Task
 from utils.logger import logger
 
@@ -19,49 +19,72 @@ class TaskRepository:
             logger.error(f"Error creating task:{error}")
 
 
-    def get_specific_task(self, task_id: int) -> Optional[Task]:
+    def get_task(self, task_id: int) -> Dict | None:
         try:
             with get_session() as task_session:
                 specific_task = task_session.query(Task).filter(Task.id == task_id).first()
                 if specific_task is None:
                     return None
-                return specific_task
+                return {
+                    "id": specific_task.id,
+                    "title": specific_task.title,
+                    "owner_id": specific_task.owner_id,
+                    "description": specific_task.description,
+                }
         except Exception as error:
             logger.error(f"Error getting task:{error}")
 
 
-    def get_all_tasks(self) -> List[Task]:
+    def get_all_tasks(self) -> List[Dict]:
         try:
             with get_session() as task_session:
                 every_task = task_session.query(Task).all()
-                return every_task
+                all_task_records = []
+                for task in every_task:
+                    all_task_records.append(
+                        {
+                            "id": task.id,
+                            "title": task.title,
+                            "owner_id": task.owner_id,
+                            "description": task.description,
+                        }
+                    )
+                return all_task_records
         except Exception as error:
             logger.error(f"Error getting all tasks:{error}")
             return []
 
 
-    def update_specific_task(self, task_id: int, new_task_data: Dict) -> None:
+    def update_task(self, task_id: int, new_task_data: Dict) -> bool:
         try:
             with get_session() as task_session:
                 task = task_session.query(Task).filter(Task.id == task_id).first()
                 if task is None:
                     logger.warning(f"Task {task_id} not found")
-                    return
-                task.title = new_task_data["title"]
-                task.description = new_task_data["description"]
-                task.status = new_task_data["status"]
-                task.is_completed = new_task_data["is_completed"]
+                    return False
+                if "title" in new_task_data:
+                    task.title = new_task_data["title"]
+                if "description" in new_task_data:
+                    task.description = new_task_data["description"]
+                if "status" in new_task_data:
+                    task.status = new_task_data["status"]
+                if "is_completed" in new_task_data:
+                    task.is_completed = new_task_data["is_completed"]
+                return True
         except Exception as error:
             logger.error(f"Error updating task:{error}")
+            raise
 
 
-    def destroy_task(self, task_id: int) -> None:
+    def destroy_task(self, task_id: int) -> bool:
         try:
             with get_session() as task_session:
                 specific_task = task_session.query(Task).filter(Task.id == task_id).first()
-                if specific_task is None:
+                if not specific_task:
                     logger.warning(f"Task {task_id} not found!")
-                    return
+                    return False
                 task_session.delete(specific_task)
+                return True
         except Exception as error:
             logger.error(f"Error deleting task:{error}")
+            raise

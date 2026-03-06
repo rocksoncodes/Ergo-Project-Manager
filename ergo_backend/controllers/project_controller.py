@@ -40,7 +40,7 @@ class ProjectController:
         return jsonify(every_project), 200
 
 
-    def update_specific_project(self, project_id: int):
+    def update_project(self, project_id: int):
         payload = request.get_json()
 
         if not payload:
