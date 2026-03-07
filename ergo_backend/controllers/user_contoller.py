@@ -14,7 +14,7 @@ class UserController:
             return jsonify({"error": "Email is required"}), 400
 
         if not payload or "password" not in payload:
-            return jsonify({"error": "password is required"}), 400
+            return jsonify({"error": "Password is required"}), 400
 
         try:
             self.user_repo.create_user_account(payload)
@@ -47,7 +47,7 @@ class UserController:
         if not updated:
             return jsonify({"error": "User account not found"}), 404
 
-        return jsonify({"success": "User account successfully"}), 200
+        return jsonify({"success": "User account updated successfully"}), 200
 
 
     def change_user_password(self, user_id: int):
@@ -55,16 +55,18 @@ class UserController:
 
         if not payload:
             return jsonify({"error": "Invalid payload"}), 400
-
         if not user_id:
             return jsonify({"error": "User ID is required"}), 400
 
         try:
-            self.user_repo.change_user_password(
+            success = self.user_repo.change_user_password(
                 user_id,
                 payload["current_password"],
                 payload["new_password"]
             )
+            if not success:
+                return jsonify({"error": "Incorrect current password"}), 401
+            return jsonify({"success": "User password updated"}), 200
         except Exception:
             return jsonify({"error": "Failed to change user password"}), 500
 
@@ -75,6 +77,10 @@ class UserController:
 
         try:
            email = self.user_repo.get_user_email(user_id)
+
+           if not email:
+               return jsonify({"Error":"user email not found"}), 404
+
            return jsonify(email), 200
         except Exception:
             return jsonify({"error": "Failed to change user email"}), 500
@@ -87,6 +93,6 @@ class UserController:
             return jsonify({"error": "Failed to delete user account"}), 500
 
         if not deleted:
-            return jsonify({"error": "user not found"}), 404
+            return jsonify({"error": "User not found"}), 404
 
-        return jsonify({"success": "user deleted successfully"}), 200
+        return jsonify({"success": "User deleted successfully"}), 200
