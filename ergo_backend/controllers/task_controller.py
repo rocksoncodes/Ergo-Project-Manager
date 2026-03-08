@@ -8,11 +8,11 @@ class TaskController:
     def create_task(self):
         payload = request.get_json()
 
-        if not payload or "title" not in payload:
-            return jsonify({"error": "Title is required"}), 400
+        if not payload:
+            return jsonify({"error": "Invalid payload"}), 400
 
-        if "description" not in payload:
-            return jsonify({"error": "Description is required"}), 400
+        if "description" and "title" not in payload:
+            return jsonify({"error": "Task title & description is required"}), 400
 
         try:
             self.task_repo.create_task(payload)
@@ -60,10 +60,11 @@ class TaskController:
     def destroy_task(self, task_id: int):
         try:
             deleted = self.task_repo.destroy_task(task_id)
+
+            if not deleted:
+                return jsonify({"error": "Task not found"}), 404
+
         except Exception:
             return jsonify({"error": "Failed to delete task"}), 500
-
-        if not deleted:
-            return jsonify({"error": "Task not found"}), 404
 
         return jsonify({"success": "Task deleted successfully"}), 200
