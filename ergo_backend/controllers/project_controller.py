@@ -60,10 +60,11 @@ class ProjectController:
     def destroy_project(self, project_id: int):
         try:
             deleted = self.project_repo.destroy_project(project_id)
+
+            if not deleted:
+                return jsonify({"error": "Project not found"}), 404
+
         except Exception:
             return jsonify({"error": "Failed to delete project"}), 500
-
-        if not deleted:
-            return jsonify({"error": "Project not found"}), 404
 
         return jsonify({"success": "Project deleted successfully"}), 200

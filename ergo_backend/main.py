@@ -1,5 +1,5 @@
 from flask import Flask
-from routes.route_registry import register_blueprints
+from utils.route_registry import register_blueprints
 
 
 def create_flask_app():

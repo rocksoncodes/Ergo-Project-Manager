@@ -16,7 +16,7 @@ def run_migrations(models):
             logger.info(f"Creating {model_key} table...")
         logger.info("Migrations completed successfully")
     except Exception as error:
-        SystemExit(f"Error initializing the database: {error}")
+        raise SystemExit(f"Error initializing the database: {error}")
 
 
 @contextmanager

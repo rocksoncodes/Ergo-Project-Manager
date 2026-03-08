@@ -14,11 +14,12 @@ class UserRepository:
                     first_name = user_details["first_name"],
                     last_name=user_details["last_name"],
                     email = user_details["email"],
-                    password = generate_password_hash(user_details["password"])
+                    password = generate_password_hash(user_details["password"], salt_length=7)
                 )
                 user_session.add(new_user)
         except Exception as error:
             logger.error(f"Error creating user:{error}")
+            raise
 
 
     def get_user_account(self, user_id: int) -> Dict | None:
@@ -36,6 +37,7 @@ class UserRepository:
                 }
         except Exception as error:
             logger.error(f"Error getting user account:{error}")
+            raise
 
 
     def update_user_account(self, user_id: int, new_account_data: Dict) -> bool:
@@ -69,7 +71,7 @@ class UserRepository:
                 return True
         except Exception as error:
             logger.error(f"Error changing password: {error}")
-            return False
+            raise
 
 
     def get_user_email(self, user_id: int) -> Dict | None:
@@ -83,6 +85,7 @@ class UserRepository:
                 }
         except Exception as error:
             logger.error(f"Error getting user email:{error}")
+            raise
 
 
     def destroy_user_account(self, user_id: int) -> bool:
