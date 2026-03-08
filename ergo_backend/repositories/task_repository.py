@@ -28,7 +28,6 @@ class TaskRepository:
                 return {
                     "id": specific_task.id,
                     "title": specific_task.title,
-                    "owner_id": specific_task.owner_id,
                     "description": specific_task.description,
                 }
         except Exception as error:
@@ -45,7 +44,6 @@ class TaskRepository:
                         {
                             "id": task.id,
                             "title": task.title,
-                            "owner_id": task.owner_id,
                             "description": task.description,
                         }
                     )

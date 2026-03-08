@@ -21,6 +21,6 @@ def get_all_tasks():
 def update_task(task_id: int):
     return task_controller.update_task(task_id)
 
-@task_bp.route("/<int:task_id>/update-task", methods=["DELETE"])
+@task_bp.route("/<int:task_id>/destroy-task", methods=["DELETE"])
 def destroy_task(task_id: int):
     return task_controller.destroy_task(task_id)
