@@ -11,6 +11,7 @@ class ProjectRepository:
                 new_project = Project(
                     title = new_project_data["title"],
                     description = new_project_data["description"],
+                    owner_id = new_project_data["owner_id"],
                 )
                 project_session.add(new_project)
         except Exception as error:
@@ -67,10 +68,6 @@ class ProjectRepository:
                     project.title = new_project_data["title"]
                 if "description" in new_project_data:
                     project.description = new_project_data["description"]
-                if "status" in new_project_data:
-                    project.status = new_project_data["status"]
-                if "is_completed" in new_project_data:
-                    project.is_completed = new_project_data["is_completed"]
                 return True
         except Exception as error:
             logger.error(f"Error updating project:{error}")

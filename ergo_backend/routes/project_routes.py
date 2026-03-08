@@ -21,6 +21,6 @@ def get_all_projects():
 def update_project(project_id: int):
     return project_controller.update_project(project_id)
 
-@project_bp.route("/<int:project_id>/destroy-project", methods =["DELETE "])
+@project_bp.route("/<int:project_id>/destroy-project", methods =["DELETE"])
 def destroy_project(project_id: int):
     return project_controller.destroy_project(project_id)
