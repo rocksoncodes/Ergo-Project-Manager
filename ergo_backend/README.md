@@ -1,12 +1,12 @@
-# Ergo Task Manager - Backend
+# Ergo Project Manager - Backend
 
-Robust and scalable Flask-based backend for the Ergo Task Manager application. This service handles project management, task tracking and user authentication using a clean Controller-Repository-Model architecture.
+Robust and scalable Flask-based backend for the Ergo Project Manager application. This service handles project management, task tracking and user authentication using a clean Controller-Repository-Model architecture.
 
 ## Tech Stack
 
 - **Core**: [Flask](https://flask.palletsprojects.com/) (Python)
 - **ORM**: [SQLAlchemy](https://www.sqlalchemy.org/)
-- **Database**: PostgreSQL (configured via DATABASE_URL)
+- **Database**: MySQL (configured via DATABASE_URL)
 - **Logging**: Custom internal logger for tracking operations
 - **Architecture**: Modular structure with separate routes, controllers and repositories
 
@@ -28,7 +28,7 @@ ergo_backend/
 
 ### Prerequisites
 
-- Python 3.8+
+- Python 3.10+
 - Pip (Python package manager)
 - Virtualenv (recommended)
 
@@ -59,7 +59,7 @@ ergo_backend/
 Create a `.env` file in the `ergo_backend` root directory with the following variables:
 
 ```env
-DATABASE_URL=postgresql://username:password@localhost:5432/ergo_db
+DATABASE_URL=mysql+pymysql://username:password@localhost:3306/ergo_db
 # Add other environment-specific variables here
 ```
 
