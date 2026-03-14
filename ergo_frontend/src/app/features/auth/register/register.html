@@ -1,1 +1,80 @@
-<p>register works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+	<!--::begin Header Text  -->
+	<div class="">
+		<h1 class="display-4 fw-bold">Welcome To Ergo!</h1>
+		<p class="fw-normal text-muted">A home for every project you and your team are juggling.</p>
+	</div>
+	<!--::end Header Text  -->
+
+	<!--::begin User name  -->
+	<div class="d-flex flex-column gap-2 mb-3">
+		<label class="fw-medium">User name</label>
+		<input type="email" class="form-control border-2 p-2" formControlName="email" placeholder="User name" />
+		@if (form["email"].touched && form["email"].invalid) { @if (form["email"].errors &&
+		form["email"].errors["required"]) {
+		<span class="text-danger">User name is required</span>
+		} }
+	</div>
+	<!--::end User name  -->
+
+	<!--::begin Email  -->
+	<div class="d-flex flex-column gap-2 mb-3">
+		<label class="fw-medium">Email</label>
+		<input type="email" class="form-control border-2 p-2" formControlName="email" placeholder="User email" />
+		@if (form["email"].touched && form["email"].invalid) { @if (form["email"].errors &&
+		form["email"].errors["required"]) {
+		<span class="text-danger">Email is required</span>
+		} }
+	</div>
+	<!--::end Email  -->
+
+	<!--::begin Password  -->
+	<div class="d-flex flex-column gap-2 mb-3">
+		<label class="fw-medium">Password</label>
+		<input
+			type="password"
+			class="form-control border-2 p-2"
+			formControlName="password"
+			placeholder="User password" />
+		@if (form["password"].touched && form["password"].invalid) { @if (form["password"].errors &&
+		form["password"].errors["required"]) {
+		<span class="text-danger">Password is required</span>
+		} }
+	</div>
+	<!--::end Password  -->
+
+	<!--::begin Sign In  -->
+	<div class="mt-5">
+		<button
+			type="submit"
+			[disabled]=" registerForm.invalid || isLoading"
+			class="btn btn-primary w-100 p-2 fw-medium shadow-sm">
+			@if (!isLoading) {
+			<span>Sign Up</span>
+			} @if (isLoading) {
+			<span>
+				<span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+				Signing you up...
+			</span>
+			}
+		</button>
+	</div>
+	<!--::end Sign In -->
+
+	<!--::begin  Sign Up Option  -->
+	<div class="d-flex flex-row gap-1 justify-content-center mt-5">
+		<p class="text-muted p-0">Already have an account?</p>
+		<a routerLink="/auth/login" class="link-primary link-underline-opacity-0">Sign in here</a>
+	</div>
+	<!--::end  Sign Up Option  -->
+
+	<!--::begin Google Sign In  -->
+	<div class="mt-2">
+		<button
+			class="d-flex gap-3 justify-content-center btn btn-secondary w-100 p-2 fw-medium bg-white border-secondary-subtle shadow-sm">
+			<img src="/google-icon.png" class="img-fluid" style="width: 30px; height: 30px" alt="google-icon" />
+			<span class="text-black">Sign up with google</span>
+		</button>
+	</div>
+	<!--::end Google Sign In -->
+</form>
