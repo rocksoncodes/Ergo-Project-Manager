@@ -14,10 +14,10 @@ export class Login implements OnInit {
 	constructor(private fb: FormBuilder) {}
 
 	ngOnInit(): void {
-		this.initializeFrom();
+		this.initializeForm();
 	}
 
-	initializeFrom(): void {
+	initializeForm(): void {
 		this.loginForm = this.fb.group({
 			email: ["", Validators.required],
 			password: ["", Validators.required],
@@ -33,13 +33,13 @@ export class Login implements OnInit {
 			return;
 		}
 
+		this.isLoading = true;
+
 		const formValue = this.loginForm.value;
 
 		const request = {
 			email: formValue.email,
 			password: formValue.password,
 		};
-
-		this.isLoading = true;
 	}
 }
