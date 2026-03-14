@@ -11,14 +11,14 @@ class UserRepository:
         try:
             with get_session() as user_session:
                 new_user = User(
-                    first_name = user_details["first_name"],
-                    last_name=user_details["last_name"],
+                    first_name = user_details["firstname"],
+                    last_name=user_details["lastname"],
                     email = user_details["email"],
                     password = generate_password_hash(user_details["password"], salt_length=7)
                 )
                 user_session.add(new_user)
         except Exception as error:
-            logger.error(f"Error creating user:{error}")
+            logger.error(f"Error creating user:{error}", exc_info=True)
             raise
 
 
