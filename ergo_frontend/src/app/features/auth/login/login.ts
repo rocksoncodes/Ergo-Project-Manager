@@ -9,7 +9,7 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from "@angula
 })
 export class Login implements OnInit {
 	loginForm!: FormGroup;
-	isLoading = false;
+	isLoading: boolean = false;
 
 	constructor(private fb: FormBuilder) {}
 
@@ -32,6 +32,13 @@ export class Login implements OnInit {
 		if (this.loginForm.invalid) {
 			return;
 		}
+
+		const formValue = this.loginForm.value;
+
+		const request = {
+			email: formValue.email,
+			password: formValue.password,
+		};
 
 		this.isLoading = true;
 	}
