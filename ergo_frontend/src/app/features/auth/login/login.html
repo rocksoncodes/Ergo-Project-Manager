@@ -1,96 +1,79 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()" class="container-fluid p-0 vh-100">
-	<div class="row h-100 m-0">
-		<div class="col p-0">
-			<img src="/login-brand.png" class="img-fluid h-100 w-100 object-fit-cover" alt="login-branding-image" />
-		</div>
-		<div class="col d-flex align-items-center justify-content-center h-100">
-			<div class="p-lg-5 w-100">
-				<!--::begin Header Text  -->
-				<div class="">
-					<h1 class="display-4 fw-bold">Welcome Back!</h1>
-					<p class="fw-normal text-muted">Enter the information you entered while registering</p>
-				</div>
-				<!--::end Header Text  -->
-
-				<!--::begin Email  -->
-				<div class="d-flex flex-column gap-2 mb-3">
-					<label class="fw-medium">Email</label>
-					<input
-						type="email"
-						class="form-control border-2 p-2"
-						formControlName="email"
-						placeholder="User email" />
-					@if (form["email"].touched && form["email"].invalid) { @if (form["email"].errors &&
-					form["email"].errors["required"]) {
-					<span class="text-danger">Email is required</span>
-					} }
-				</div>
-				<!--::end Email  -->
-
-				<!--::begin Password  -->
-				<div class="d-flex flex-column gap-2 mb-3">
-					<label class="fw-medium">Password</label>
-					<input
-						type="password"
-						class="form-control border-2 p-2"
-						formControlName="password"
-						placeholder="User password" />
-					@if (form["password"].touched && form["password"].invalid) { @if (form["password"].errors &&
-					form["password"].errors["required"]) {
-					<span class="text-danger">Password is required</span>
-					} }
-				</div>
-				<!--::end Password  -->
-
-				<!--::begin  Helpers   -->
-				<div class="d-flex flex-row justify-content-between text-muted">
-					<div class="d-flex gap-1">
-						<input type="checkbox" class="form-check-input" />
-						<span>Remember me</span>
-					</div>
-					<a href="" class="link-secondary link-underline-opacity-0">Forgot password?</a>
-				</div>
-				<!--::end Helpers  -->
-
-				<!--::begin Sign In  -->
-				<div class="mt-5">
-					<button
-						type="submit"
-						[disabled]=" loginForm.invalid || isLoading"
-						class="btn btn-primary w-100 p-2 fw-medium shadow-sm">
-						@if (!isLoading) {
-						<span>Login</span>
-						} @if (isLoading) {
-						<span>
-							<span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-							Signing in...
-						</span>
-						}
-					</button>
-				</div>
-				<!--::end Sign In -->
-
-				<!--::begin  Sign Up Option  -->
-				<div class="d-flex flex-row gap-1 justify-content-center mt-5">
-					<p class="text-muted p-0">Don't have an account?</p>
-					<a href="" class="link-primary link-underline-opacity-0">Sign up here</a>
-				</div>
-				<!--::end  Sign Up Option  -->
-
-				<!--::begin Google Sign In  -->
-				<div class="mt-2">
-					<button
-						class="d-flex gap-3 justify-content-center btn btn-secondary w-100 p-2 fw-medium bg-white border-secondary-subtle shadow-sm">
-						<img
-							src="/google-icon.png"
-							class="img-fluid"
-							style="width: 30px; height: 30px"
-							alt="google-icon" />
-						<span class="text-black">Sign in with google</span>
-					</button>
-				</div>
-				<!--::end Google Sign In -->
-			</div>
-		</div>
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+	<!--::begin Header Text  -->
+	<div class="">
+		<h1 class="display-4 fw-bold">Welcome Back!</h1>
+		<p class="fw-normal text-muted">Enter the information you entered while registering</p>
 	</div>
+	<!--::end Header Text  -->
+
+	<!--::begin Email  -->
+	<div class="d-flex flex-column gap-2 mb-3">
+		<label class="fw-medium">Email</label>
+		<input type="email" class="form-control border-2 p-2" formControlName="email" placeholder="User email" />
+		@if (form["email"].touched && form["email"].invalid) { @if (form["email"].errors &&
+		form["email"].errors["required"]) {
+		<span class="text-danger">Email is required</span>
+		} }
+	</div>
+	<!--::end Email  -->
+
+	<!--::begin Password  -->
+	<div class="d-flex flex-column gap-2 mb-3">
+		<label class="fw-medium">Password</label>
+		<input
+			type="password"
+			class="form-control border-2 p-2"
+			formControlName="password"
+			placeholder="User password" />
+		@if (form["password"].touched && form["password"].invalid) { @if (form["password"].errors &&
+		form["password"].errors["required"]) {
+		<span class="text-danger">Password is required</span>
+		} }
+	</div>
+	<!--::end Password  -->
+
+	<!--::begin  Helpers   -->
+	<div class="d-flex flex-row justify-content-between text-muted">
+		<div class="d-flex gap-1">
+			<input type="checkbox" class="form-check-input" />
+			<span>Remember me</span>
+		</div>
+		<a href="" class="link-secondary link-underline-opacity-0">Forgot password?</a>
+	</div>
+	<!--::end Helpers  -->
+
+	<!--::begin Sign In  -->
+	<div class="mt-5">
+		<button
+			type="submit"
+			[disabled]=" loginForm.invalid || isLoading"
+			class="btn btn-primary w-100 p-2 fw-medium shadow-sm">
+			@if (!isLoading) {
+			<span>Login</span>
+			} @if (isLoading) {
+			<span>
+				<span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+				Signing in...
+			</span>
+			}
+		</button>
+	</div>
+	<!--::end Sign In -->
+
+	<!--::begin  Sign Up Option  -->
+	<div class="d-flex flex-row gap-1 justify-content-center mt-5">
+		<p class="text-muted p-0">Don't have an account?</p>
+		<a routerLink="/auth/register" class="link-primary link-underline-opacity-0">Sign up here</a>
+	</div>
+	<!--::end  Sign Up Option  -->
+
+	<!--::begin Google Sign In  -->
+	<div class="mt-2">
+		<button
+			class="d-flex gap-3 justify-content-center btn btn-secondary w-100 p-2 fw-medium bg-white border-secondary-subtle shadow-sm">
+			<img src="/google-icon.png" class="img-fluid" style="width: 30px; height: 30px" alt="google-icon" />
+			<span class="text-black">Sign in with google</span>
+		</button>
+	</div>
+	<!--::end Google Sign In -->
 </form>
