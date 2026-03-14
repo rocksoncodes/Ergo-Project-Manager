@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../auth-service';
 
 @Component({
   selector: 'app-register',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })
-export class Register {}
+export class Register {
+  constructor(private authService: AuthService) {}
+}

@@ -8,11 +8,11 @@ export const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import('./features/auth/auth.routes').then(m => m.AUTH_ROUTES),
+    loadChildren: () => import('./features/auth/auth.routes').then((route) => route.AUTH_ROUTES),
   },
   {
     path: '**',
     redirectTo: 'auth/login',
     pathMatch: 'full',
-  }
+  },
 ];
