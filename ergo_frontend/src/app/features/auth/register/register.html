@@ -6,16 +6,27 @@
 	</div>
 	<!--::end Header Text  -->
 
-	<!--::begin User name  -->
+  <!--::begin First name  -->
+  <div class="d-flex flex-column gap-2 mb-3">
+    <label class="fw-medium">First name</label>
+    <input type="text" class="form-control border-2 p-2" formControlName="firstname" placeholder="First name" />
+    @if (form["firstname"].touched && form["firstname"].invalid) { @if (form["firstname"].errors &&
+    form["firstname"].errors["required"]) {
+      <span class="text-danger">First name is required</span>
+    } }
+  </div>
+  <!--::end First name  -->
+
+	<!--::begin Last name  -->
 	<div class="d-flex flex-column gap-2 mb-3">
-		<label class="fw-medium">User name</label>
-		<input type="email" class="form-control border-2 p-2" formControlName="email" placeholder="User name" />
-		@if (form["email"].touched && form["email"].invalid) { @if (form["email"].errors &&
-		form["email"].errors["required"]) {
-		<span class="text-danger">User name is required</span>
+		<label class="fw-medium">Last name</label>
+		<input type="text" class="form-control border-2 p-2" formControlName="lastname" placeholder="Last name" />
+		@if (form["lastname"].touched && form["lastname"].invalid) { @if (form["lastname"].errors &&
+		form["lastname"].errors["required"]) {
+		<span class="text-danger">Last name is required</span>
 		} }
 	</div>
-	<!--::end User name  -->
+	<!--::end Last name  -->
 
 	<!--::begin Email  -->
 	<div class="d-flex flex-column gap-2 mb-3">
