@@ -1,17 +1,18 @@
-import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { RouterLink } from "@angular/router";
-import { AuthService } from "../auth-service";
+import { AuthService } from "../services/auth-service";
 import { ToastrService } from "ngx-toastr";
+import { RegisterPayload } from "../models/auth-models";
 
 @Component({
 	selector: "app-register",
 	imports: [ReactiveFormsModule, RouterLink],
-	templateUrl: "./register.html",
-	styleUrl: "./register.scss",
+	templateUrl: "./auth-register.html",
+	styleUrl: "./auth-register.scss",
 	standalone: true,
 })
-export class Register implements OnInit {
+export class AuthRegister implements OnInit {
 	registerForm!: FormGroup;
 	isLoading: boolean = false;
 
@@ -19,7 +20,6 @@ export class Register implements OnInit {
 		private fb: FormBuilder,
 		private authService: AuthService,
 		private toastr: ToastrService,
-		private cd: ChangeDetectorRef,
 	) {}
 
 	ngOnInit(): void {
@@ -47,24 +47,16 @@ export class Register implements OnInit {
 		this.isLoading = true;
 		this.registerForm.markAsTouched();
 
-		const formValue = this.registerForm.value;
-		const request = {
-			firstname: formValue.firstname,
-			lastname: formValue.lastname,
-			email: formValue.email,
-			password: formValue.password,
-		};
+		const request: RegisterPayload = this.registerForm.value;
 
 		this.authService.registerUser(request).subscribe({
 			next: () => {
 				this.isLoading = false;
 				this.toastr.success("Account created successfully.");
-				this.cd.markForCheck();
 			},
 			error: (error: any) => {
 				this.isLoading = false;
 				this.toastr.error(error.message);
-				this.cd.markForCheck();
 			},
 		});
 	}

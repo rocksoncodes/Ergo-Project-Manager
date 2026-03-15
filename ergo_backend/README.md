@@ -75,7 +75,7 @@ The API will be available at `http://localhost:5000` (default Flask port).
 
 ## API Endpoints Summary
 
-- **Users**: Registration, Login and Profile management.
+- **Users**: Registration, AuthLogin and Profile management.
 - **Projects**: Create, Read, Update and Delete project entities.
 - **Tasks**: Lifecycle management of tasks within projects.
 

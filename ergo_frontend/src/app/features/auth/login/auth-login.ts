@@ -1,19 +1,24 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from "@angular/forms";
 import { RouterLink } from "@angular/router";
+import { AuthService } from "../services/auth-service";
+import { LoginPayload } from "../models/auth-models";
 
 @Component({
 	selector: "app-login",
 	imports: [ReactiveFormsModule, RouterLink],
-	templateUrl: "./login.html",
-	styleUrl: "./login.scss",
+	templateUrl: "./auth-login.html",
+	styleUrl: "./auth-login.scss",
 	standalone: true,
 })
-export class Login implements OnInit {
+export class AuthLogin implements OnInit {
 	loginForm!: FormGroup;
 	isLoading: boolean = false;
 
-	constructor(private fb: FormBuilder) {}
+	constructor(
+		private fb: FormBuilder,
+		private authService: AuthService,
+	) {}
 
 	ngOnInit(): void {
 		this.initializeForm();
@@ -35,13 +40,18 @@ export class Login implements OnInit {
 			return;
 		}
 
+		this.loginForm.markAsTouched();
 		this.isLoading = true;
 
-		const formValue = this.loginForm.value;
+		const request: LoginPayload = this.loginForm.value;
 
-		const request = {
-			email: formValue.email,
-			password: formValue.password,
-		};
+		this.authService.loginUser(request).subscribe({
+			next: () => {
+				this.isLoading = false;
+			},
+			error: () => {
+				this.isLoading = false;
+			},
+		});
 	}
 }
