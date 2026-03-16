@@ -1,5 +1,5 @@
 import { Routes } from "@angular/router";
-import { HomeLayout } from "./component/home-layout/home-layout";
+import { HomeLayout } from "./components/home-layout/home-layout";
 
 export const HOME_ROUTES: Routes = [
 	{
@@ -13,7 +13,7 @@ export const HOME_ROUTES: Routes = [
 			},
 			{
 				path: "dashboard",
-				loadComponent: () => import("./component/dashboard/dashboard").then((child) => child.Dashboard),
+				loadComponent: () => import("./components/dashboard/dashboard").then((child) => child.Dashboard),
 			},
 			{
 				path: "**",
