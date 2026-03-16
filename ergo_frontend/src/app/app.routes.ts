@@ -11,6 +11,10 @@ export const routes: Routes = [
 		loadChildren: () => import("./features/auth/auth.routes").then((route) => route.AUTH_ROUTES),
 	},
 	{
+		path: "home",
+		loadChildren: () => import("./features/home/home.routes").then((route) => route.HOME_ROUTES),
+	},
+	{
 		path: "**",
 		redirectTo: "auth/register",
 		pathMatch: "full",

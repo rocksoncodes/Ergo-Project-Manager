@@ -36,8 +36,8 @@ export class AuthRegister implements OnInit {
 		});
 	}
 
-	navigateToDashboard(): void {
-		this.router.navigate(["/dashboard"]).then((success) => {
+	navigateToHomePage(): void {
+		this.router.navigate(["/home"]).then((success) => {
 			if (!success) {
 				this.toastr.error("System failure please try again later");
 			}
@@ -56,18 +56,19 @@ export class AuthRegister implements OnInit {
 		this.isLoading = true;
 		this.registerForm.markAsTouched();
 
-		const request: RegisterPayload = this.registerForm.value;
+		// const request: RegisterPayload = this.registerForm.value;
 
-		this.authService.registerUser(request).subscribe({
-			next: () => {
-				this.isLoading = false;
-				this.toastr.success("Account created successfully.");
-				this.navigateToDashboard();
-			},
-			error: (error: any) => {
-				this.isLoading = false;
-				this.toastr.error(error.message);
-			},
-		});
+		// this.authService.registerUser(request).subscribe({
+		// 	next: () => {
+		// 		this.isLoading = false;
+		// 		this.toastr.success("Account created successfully.");
+		// 		this.navigateToDashboard();
+		// 	},
+		// 	error: (error: any) => {
+		// 		this.isLoading = false;
+		// 		this.toastr.error(error.message);
+		// 	},
+		// });
+		this.navigateToHomePage();
 	}
 }

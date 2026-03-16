@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from "@angular/forms";
-import { RouterLink } from "@angular/router";
+import { RouterLink, Router } from "@angular/router";
 import { AuthService } from "../../services/auth-service";
 import { LoginPayload } from "../../models/auth-models";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
 	selector: "app-login",
@@ -18,6 +19,8 @@ export class AuthLogin implements OnInit {
 	constructor(
 		private fb: FormBuilder,
 		private authService: AuthService,
+		private router: Router,
+		private toastr: ToastrService,
 	) {}
 
 	ngOnInit(): void {
@@ -28,6 +31,13 @@ export class AuthLogin implements OnInit {
 		this.loginForm = this.fb.group({
 			email: ["", Validators.required],
 			password: ["", Validators.required],
+		});
+	}
+
+	navigateToHomePage(): void {
+		this.router.navigate(["/home"]).then((response) => {
+			this.isLoading = false;
+			this.toastr.success("Welcome Back!");
 		});
 	}
 
@@ -43,15 +53,16 @@ export class AuthLogin implements OnInit {
 		this.loginForm.markAsTouched();
 		this.isLoading = true;
 
-		const request: LoginPayload = this.loginForm.value;
-
-		this.authService.loginUser(request).subscribe({
-			next: () => {
-				this.isLoading = false;
-			},
-			error: () => {
-				this.isLoading = false;
-			},
-		});
+		// const request: LoginPayload = this.loginForm.value;
+		//
+		// this.authService.loginUser(request).subscribe({
+		// 	next: () => {
+		// 		this.isLoading = false;
+		// 	},
+		// 	error: () => {
+		// 		this.isLoading = false;
+		// 	},
+		// });
+		this.navigateToHomePage();
 	}
 }
