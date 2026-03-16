@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { RouterLink } from "@angular/router";
-import { AuthService } from "../services/auth-service";
+import { RouterLink, Router } from "@angular/router";
+import { AuthService } from "../../services/auth-service";
 import { ToastrService } from "ngx-toastr";
-import { RegisterPayload } from "../models/auth-models";
+import { RegisterPayload } from "../../models/auth-models";
 
 @Component({
 	selector: "app-register",
@@ -20,6 +20,7 @@ export class AuthRegister implements OnInit {
 		private fb: FormBuilder,
 		private authService: AuthService,
 		private toastr: ToastrService,
+		private router: Router,
 	) {}
 
 	ngOnInit(): void {
@@ -35,6 +36,14 @@ export class AuthRegister implements OnInit {
 		});
 	}
 
+	navigateToHomePage(): void {
+		this.router.navigate(["/home"]).then((success) => {
+			if (!success) {
+				this.toastr.error("System failure please try again later");
+			}
+		});
+	}
+
 	get form() {
 		return this.registerForm.controls;
 	}
@@ -47,17 +56,19 @@ export class AuthRegister implements OnInit {
 		this.isLoading = true;
 		this.registerForm.markAsTouched();
 
-		const request: RegisterPayload = this.registerForm.value;
+		// const request: RegisterPayload = this.registerForm.value;
 
-		this.authService.registerUser(request).subscribe({
-			next: () => {
-				this.isLoading = false;
-				this.toastr.success("Account created successfully.");
-			},
-			error: (error: any) => {
-				this.isLoading = false;
-				this.toastr.error(error.message);
-			},
-		});
+		// this.authService.registerUser(request).subscribe({
+		// 	next: () => {
+		// 		this.isLoading = false;
+		// 		this.toastr.success("Account created successfully.");
+		// 		this.navigateToDashboard();
+		// 	},
+		// 	error: (error: any) => {
+		// 		this.isLoading = false;
+		// 		this.toastr.error(error.message);
+		// 	},
+		// });
+		this.navigateToHomePage();
 	}
 }
