@@ -70,5 +70,6 @@ export class AuthRegister implements OnInit {
 		// 	},
 		// });
 		this.navigateToHomePage();
+		this.toastr.success("Welcome to Ergo");
 	}
 }
