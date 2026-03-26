@@ -1,10 +1,43 @@
 import { Component } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { NavItems } from "./sidebar-models/sidebar.models";
+import { RouterLink, RouterLinkActive } from "@angular/router";
 
 @Component({
 	selector: "app-sidebar",
-	imports: [],
+	imports: [CommonModule, RouterLink, RouterLinkActive],
 	templateUrl: "./sidebar.html",
 	styleUrl: "./sidebar.scss",
 	standalone: true,
 })
-export class Sidebar {}
+export class Sidebar {
+	navItems: NavItems[] = [
+		{
+			icon: "bi-house-door-fill",
+			label: "Dashboard",
+			route: "/dashboard",
+		},
+		{
+			icon: "bi-folder-fill",
+			label: "Projects",
+			route: "/projects",
+		},
+		{
+			icon: "bi-people-fill",
+			label: "Members",
+			route: "/members",
+		},
+		{
+			icon: "bi-list-task",
+			label: "Tasks",
+			route: "/tasks",
+		},
+		{
+			icon: "bi-gear-wide-connected",
+			label: "Settings",
+			route: "/settings",
+		},
+	];
+
+	isCollapsed = false;
+}

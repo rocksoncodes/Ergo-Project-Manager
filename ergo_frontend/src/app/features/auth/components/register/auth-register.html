@@ -6,16 +6,16 @@
 	</div>
 	<!--::end Header Text  -->
 
-  <!--::begin First name  -->
-  <div class="d-flex flex-column gap-2 mb-3">
-    <label class="fw-medium">First name</label>
-    <input type="text" class="form-control border-2 p-2" formControlName="firstname" placeholder="First name" />
-    @if (form["firstname"].touched && form["firstname"].invalid) { @if (form["firstname"].errors &&
-    form["firstname"].errors["required"]) {
-      <span class="text-danger">First name is required</span>
-    } }
-  </div>
-  <!--::end First name  -->
+	<!--::begin First name  -->
+	<div class="d-flex flex-column gap-2 mb-3">
+		<label class="fw-medium">First name</label>
+		<input type="text" class="form-control border-2 p-2" formControlName="firstname" placeholder="First name" />
+		@if (form["firstname"].touched && form["firstname"].invalid) { @if (form["firstname"].errors &&
+		form["firstname"].errors["required"]) {
+		<span class="text-danger">First name is required</span>
+		} }
+	</div>
+	<!--::end First name  -->
 
 	<!--::begin Last name  -->
 	<div class="d-flex flex-column gap-2 mb-3">
@@ -73,7 +73,7 @@
 	<!--::end Sign In -->
 
 	<!--::begin  Sign Up Option  -->
-	<div class="d-flex flex-row gap-1 justify-content-center mt-md-3">
+	<div class="d-flex flex-row gap-1 justify-content-center mt-md-4">
 		<p class="text-muted p-0">Already have an account?</p>
 		<a routerLink="/auth/login" class="link-primary link-underline-opacity-0">Sign in here</a>
 	</div>

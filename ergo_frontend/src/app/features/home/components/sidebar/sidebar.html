@@ -1,7 +1,34 @@
-<div class="container vh-100 bg-black">
-  <div class="row">
-    <div class="col">
-      <p>sidebar works!</p>
-    </div>
-  </div>
-</div>
+<aside class="sidebar vh-100 d-flex flex-column bg-white">
+	<!--::begin Branding-->
+	<div class="sidebar-brand d-flex align-items-center px-3 py-3">
+		<i class="bi bi-lightning-charge-fill text-primary fs-4"></i>
+		<span class="brand-name ms-2 fw-semibold">Ergo</span>
+	</div>
+	<!--::end Branding  -->
+
+	<hr class="mx-3 my-0 text-secondary" />
+
+	<!--::begin Nav links  -->
+  <nav class="flex-grow-1 mt-2">
+    <ul class="nav flex-column px-2">
+      @for (item of navItems; track item.route) {
+        <li class="nav-item">
+          <a
+          class="nav-link sidebar-link d-flex align-items-center gap-2 rounded text-muted"
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          >
+          <i class="bi {{ item.icon }} fs-5"></i>
+            @if (!isCollapsed) {
+              <span class="link-label">{{ item.label }}</span>
+            }
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+	<!--::end Nav links  -->
+
+	<!--::begin User account  -->
+	<!--::end User account  -->
+</aside>
