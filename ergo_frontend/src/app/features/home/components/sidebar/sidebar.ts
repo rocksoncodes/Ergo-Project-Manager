@@ -23,6 +23,11 @@ export class Sidebar {
 			route: "/projects",
 		},
 		{
+			icon: "bi-people-fill",
+			label: "Members",
+			route: "/members",
+		},
+		{
 			icon: "bi-list-task",
 			label: "Tasks",
 			route: "/tasks",

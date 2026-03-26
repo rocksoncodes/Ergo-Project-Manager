@@ -6,16 +6,16 @@
 	</div>
 	<!--::end Header Text  -->
 
-  <!--::begin First name  -->
-  <div class="d-flex flex-column gap-2 mb-3">
-    <label class="fw-medium">First name</label>
-    <input type="text" class="form-control border-2 p-2" formControlName="firstname" placeholder="First name" />
-    @if (form["firstname"].touched && form["firstname"].invalid) { @if (form["firstname"].errors &&
-    form["firstname"].errors["required"]) {
-      <span class="text-danger">First name is required</span>
-    } }
-  </div>
-  <!--::end First name  -->
+	<!--::begin First name  -->
+	<div class="d-flex flex-column gap-2 mb-3">
+		<label class="fw-medium">First name</label>
+		<input type="text" class="form-control border-2 p-2" formControlName="firstname" placeholder="First name" />
+		@if (form["firstname"].touched && form["firstname"].invalid) { @if (form["firstname"].errors &&
+		form["firstname"].errors["required"]) {
+		<span class="text-danger">First name is required</span>
+		} }
+	</div>
+	<!--::end First name  -->
 
 	<!--::begin Last name  -->
 	<div class="d-flex flex-column gap-2 mb-3">
