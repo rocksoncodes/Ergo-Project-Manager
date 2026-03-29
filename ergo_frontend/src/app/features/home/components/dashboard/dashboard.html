@@ -1,5 +1,32 @@
 <div class="vh-100 mt-lg-3">
 	<div class="container-fluid">
+		<!--    -->
+    <div class="d-flex justify-content-between align-items-center mb-lg-5">
+      <!--::begin Welcome message and summary statistics -->
+      <div class="d-flex flex-column gap-3">
+        <h3 class="fw-bold mb-1">Welcome Back, User!</h3>
+        <div class="d-flex gap-4 small text-muted">
+          <span><strong class="text-dark">4</strong> Tasks Due Today</span>
+          <span><strong class="text-dark">2</strong> Overdue Tasks</span>
+          <span><strong class="text-dark">8</strong> Upcoming Deadlines</span>
+        </div>
+      </div>
+      <!--::end Welcome message and summary statistics -->
+
+      <!--::begin Action buttons -->
+      <div class="d-flex gap-2">
+        <button class="btn btn-primary btn-sm px-3 py-2 fw-semibold">
+          <i class="bi-plus-circle"></i>
+          Create Project
+        </button>
+        <button class="btn btn-outline-secondary btn-sm px-3 py-2 d-flex align-items-center gap-2">
+          <i class="bi bi-file-earmark-arrow-down fs-6"></i>
+          Export
+        </button>
+      </div>
+      <!--::end Action buttons -->
+    </div>
+		<!--    -->
 		<div class="row mb-5">
 			<!--::begin Total Projects Card     -->
 			<div class="col">
@@ -60,8 +87,8 @@
 					<div class="dropdown">
 						<button
 							class="btn btn-primary fw-semibold dropdown-toggle"
-              type="button"
-					    data-bs-toggle="dropdown"
+							type="button"
+							data-bs-toggle="dropdown"
 							aria-expanded="false">
 							<i class="bi bi-filter"></i>
 							Filter
@@ -74,10 +101,52 @@
 					</div>
 				</div>
 			</div>
-      <div class="card">
-        <div class="card-body p-0">
-        </div>
-      </div>
-		<!--    ::end Task List component-->
+			<div class="card">
+				<div class="card-body p-0">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Task Name</th>
+								<th scope="col">Description</th>
+								<th scope="col">Due Date</th>
+								<th scope="col">Status</th>
+								<th scope="col">Priority</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Task 1</td>
+								<td>Task Description</td>
+								<td>Task Deadline</td>
+								<td class="badge text-bg-success m-2">Status</td>
+								<td>Task Priority</td>
+							</tr>
+							<tr>
+								<td>Task 2</td>
+								<td>Task Description</td>
+								<td>Task Deadline</td>
+								<td class="badge text-bg-danger m-2">Status</td>
+								<td>Task Priority</td>
+							</tr>
+							<tr>
+								<td>Task 3</td>
+								<td>Task Description</td>
+								<td>Task Deadline</td>
+								<td class="badge text-bg-success m-2">Status</td>
+								<td>Task Priority</td>
+							</tr>
+							<tr>
+								<td>Task 4</td>
+								<td>Task Description</td>
+								<td>Task Deadline</td>
+								<td class="badge text-bg-warning m-2 text-white">Status</td>
+								<td>Task Priority</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!--    ::end Task List component-->
+		</div>
 	</div>
 </div>
