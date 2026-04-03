@@ -1,0 +1,129 @@
+:host {
+	--sidebar-width: 260px;
+	--sidebar-collapsed-width: 78px;
+	--transition-speed: 0.3s;
+	display: contents;
+}
+
+.sidebar {
+	width: var(--sidebar-width);
+	min-width: var(--sidebar-width);
+	transition: all var(--transition-speed) ease;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background: white;
+
+	&.collapsed {
+		width: var(--sidebar-collapsed-width);
+		min-width: var(--sidebar-collapsed-width);
+	}
+}
+
+.sidebar-brand-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 64px;
+	position: relative;
+	padding: 1rem 1.25rem;
+
+	.sidebar-brand {
+		transition: opacity 0.3s ease;
+		opacity: 1;
+		display: flex;
+		align-items: center;
+	}
+
+	.toggle-btn {
+		width: 28px;
+		height: 28px;
+		border-radius: 50% !important;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0;
+		position: absolute;
+		right: 1.25rem;
+		top: 50%;
+		transform: translateY(-50%);
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		opacity: 0;
+		pointer-events: none;
+		z-index: 10;
+
+		&:hover {
+			transform: translateY(-50%) scale(1.1);
+		}
+
+		&.expanded {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		i {
+			line-height: 1;
+			font-size: 1.1rem;
+		}
+	}
+
+	&:hover {
+		.toggle-btn {
+			opacity: 1;
+			pointer-events: auto;
+		}
+	}
+}
+
+.collapsed .sidebar-brand-wrapper {
+	justify-content: center;
+
+	.toggle-btn {
+		left: 50%;
+		right: auto;
+		transform: translate(-50%, -50%);
+
+		&:hover {
+			transform: translate(-50%, -50%) scale(1.1);
+		}
+	}
+
+	&:hover {
+		.sidebar-brand {
+			opacity: 0;
+		}
+
+		.toggle-btn {
+			opacity: 1;
+		}
+	}
+}
+
+.sidebar-link {
+	white-space: nowrap;
+	padding: 0.75rem 1rem;
+	transition: all 0.2s ease;
+	border-radius: 8px !important;
+	margin-bottom: 2px;
+	text-decoration: none;
+
+	&:hover {
+		background-color: rgba(var(--bs-primary-rgb), 0.05);
+		color: var(--bs-primary) !important;
+	}
+
+	&.active {
+		background-color: var(--bs-primary);
+		color: white !important;
+		font-weight: 500;
+		box-shadow: 0 4px 6px -1px rgba(var(--bs-primary-rgb), 0.2);
+	}
+}
+
+.link-label {
+	transition: opacity 0.2s ease;
+}
+
+.collapsed .link-label {
+	opacity: 0;
+	pointer-events: none;
+}

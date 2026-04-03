@@ -15,7 +15,7 @@ export class Sidebar {
 		{
 			icon: "bi-house-door-fill",
 			label: "Dashboard",
-			route: "/dashboard",
+			route: "/home/dashboard",
 		},
 	];
 
@@ -41,9 +41,13 @@ export class Sidebar {
 		{
 			icon: "bi-gear-wide-connected",
 			label: "Settings",
-			route: "/settings",
+			route: "/home/settings",
 		},
 	];
 
 	isCollapsed = false;
+
+	toggleCollapse() {
+		this.isCollapsed = !this.isCollapsed;
+	}
 }
