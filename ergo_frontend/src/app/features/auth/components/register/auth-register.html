@@ -1,32 +1,34 @@
 <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
 	<!--::begin Header Text  -->
 	<div class="">
-		<h1 class="display-4 fw-bold">Welcome To Ergo!</h1>
+		<h3 class="display-5 fw-bold">Welcome To Ergo!</h3>
 		<p class="fw-normal text-muted">A home for every project you and your team are juggling.</p>
 	</div>
 	<!--::end Header Text  -->
 
-	<!--::begin First name  -->
-	<div class="d-flex flex-column gap-2 mb-3">
-		<label class="fw-medium">First name</label>
-		<input type="text" class="form-control border-2 p-2" formControlName="firstname" placeholder="First name" />
-		@if (form["firstname"].touched && form["firstname"].invalid) { @if (form["firstname"].errors &&
-		form["firstname"].errors["required"]) {
-		<span class="text-danger">First name is required</span>
-		} }
-	</div>
-	<!--::end First name  -->
+	<div class="d-flex gap-2 mb-3">
+		<!--::begin First name  -->
+		<div class="d-flex flex-column gap-2 flex-grow-1">
+			<label class="fw-medium">First name</label>
+			<input type="text" class="form-control border-2 p-2 mw-100" formControlName="firstname" placeholder="First name" />
+			@if (form["firstname"].touched && form["firstname"].invalid) { @if (form["firstname"].errors &&
+			form["firstname"].errors["required"]) {
+			<span class="text-danger">First name is required</span>
+			} }
+		</div>
+		<!--::end First name  -->
 
-	<!--::begin Last name  -->
-	<div class="d-flex flex-column gap-2 mb-3">
-		<label class="fw-medium">Last name</label>
-		<input type="text" class="form-control border-2 p-2" formControlName="lastname" placeholder="Last name" />
-		@if (form["lastname"].touched && form["lastname"].invalid) { @if (form["lastname"].errors &&
-		form["lastname"].errors["required"]) {
-		<span class="text-danger">Last name is required</span>
-		} }
+		<!--::begin Last name  -->
+		<div class="d-flex flex-column gap-2 flex-grow-1">
+			<label class="fw-medium">Last name</label>
+			<input type="text" class="form-control border-2 p-2" formControlName="lastname" placeholder="Last name" />
+			@if (form["lastname"].touched && form["lastname"].invalid) { @if (form["lastname"].errors &&
+			form["lastname"].errors["required"]) {
+			<span class="text-danger">Last name is required</span>
+			} }
+		</div>
+		<!--::end Last name  -->
 	</div>
-	<!--::end Last name  -->
 
 	<!--::begin Email  -->
 	<div class="d-flex flex-column gap-2 mb-3">
