@@ -23,6 +23,14 @@ export class Dashboard {
 				borderColor: "#4e73df",
 				backgroundColor: "rgba(78, 115, 223, 0.1)",
 			},
+			{
+				label: "Projects Points",
+				tension: 0.4,
+				fill: true,
+				data: [20, 60, 30, 20, 40],
+				borderColor: "#dfaa4e",
+				backgroundColor: "rgb(223 165 78 / 0.1)",
+			},
 		],
 	};
 
