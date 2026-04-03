@@ -3,13 +3,13 @@ import { BaseChartDirective } from "ng2-charts";
 import { ChartData, ChartOptions, ChartType } from "chart.js";
 
 @Component({
-	selector: "app-dashboard",
-	standalone: true,
+	selector: "app-dashboard-chart",
 	imports: [BaseChartDirective],
-	templateUrl: "./dashboard.html",
-	styleUrl: "./dashboard.scss",
+	templateUrl: "./dashboard-chart.html",
+	styleUrl: "./dashboard-chart.scss",
+	standalone: true,
 })
-export class Dashboard {
+export class DashboardChart {
 	chartType: ChartType = "line";
 
 	chartData: ChartData = {

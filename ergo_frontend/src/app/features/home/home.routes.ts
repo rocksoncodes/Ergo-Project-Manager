@@ -13,7 +13,8 @@ export const HOME_ROUTES: Routes = [
 			},
 			{
 				path: "dashboard",
-				loadComponent: () => import("./components/dashboard/dashboard").then((child) => child.Dashboard),
+				loadComponent: () =>
+					import("../dashboard/components/dashboard-main/dashboard").then((child) => child.Dashboard),
 			},
 			{
 				path: "**",
