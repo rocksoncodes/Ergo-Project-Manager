@@ -25,7 +25,7 @@
 			<!--::begin Action buttons -->
 			<div class="d-flex gap-2">
 				<button class="btn btn-primary btn-sm px-3 py-2 fw-semibold">
-					<i class="bi-plus-circle"></i>
+					<i class="bi bi-plus-circle"></i>
 					Create Project
 				</button>
 				<button class="btn btn-outline-secondary btn-sm px-3 py-2 d-flex align-items-center gap-2">
@@ -86,8 +86,9 @@
 			</div>
 			<!--::end Completed Tasks Card      -->
 		</div>
+
 		<!--    ::begin Task List component-->
-		<div class="row card p-lg-3 m-auto border-0 shadow-sm">
+		<div class="row card p-lg-3 m-auto border-0 shadow-sm mb-5">
 			<div class="d-flex justify-content-between align-items-center mb-3">
 				<h6 class="card-subtitle fw-semibold">Today's Tasks</h6>
 				<div class="d-flex gap-3">
@@ -159,12 +160,13 @@
 		</div>
 		<!--    ::end Task List component-->
 
-<!--    -->
-    <div class="row card p-lg-3 m-auto border-0 shadow-sm">
-      <div class="card-body p-0">
-
-      </div>
-    </div>
-<!--    -->
+		<!--::begin Performance Chart    -->
+		<div class="row card p-lg-3 m-auto border-0 shadow-sm">
+			<h6 class="card-subtitle fw-semibold">Weekly Performance Overview</h6>
+			<div class="chart-container card-body p-0">
+				<canvas baseChart role="img" [data]="chartData" [options]="chartOptions" [type]="chartType"></canvas>
+			</div>
+		</div>
+		<!--::end Performance Chart    -->
 	</div>
 </div>
