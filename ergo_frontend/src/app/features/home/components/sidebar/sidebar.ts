@@ -11,12 +11,15 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
 	standalone: true,
 })
 export class Sidebar {
-	navItems: NavItems[] = [
+	navOverviewItems: NavItems[] = [
 		{
 			icon: "bi-house-door-fill",
 			label: "Dashboard",
 			route: "/dashboard",
 		},
+	];
+
+	navGeneralItems: NavItems[] = [
 		{
 			icon: "bi-folder-fill",
 			label: "Projects",
@@ -32,6 +35,9 @@ export class Sidebar {
 			label: "Tasks",
 			route: "/tasks",
 		},
+	];
+
+	navManagementItems: NavItems[] = [
 		{
 			icon: "bi-gear-wide-connected",
 			label: "Settings",
