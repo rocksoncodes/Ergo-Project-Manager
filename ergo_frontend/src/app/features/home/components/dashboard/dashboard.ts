@@ -14,7 +14,16 @@ export class Dashboard {
 
 	chartData: ChartData = {
 		labels: ["Mon", "Tue", "Wed", "Thur", "Fri"],
-		datasets: [{ label: "Cleared Tasks", data: [10, 40, 20, 50, 30] }],
+		datasets: [
+			{
+				label: "Tasks Completed",
+				tension: 0.4,
+				fill: true,
+				data: [10, 40, 20, 50, 30],
+				borderColor: "#4e73df",
+				backgroundColor: "rgba(78, 115, 223, 0.1)",
+			},
+		],
 	};
 
 	chartOptions: ChartOptions = {
