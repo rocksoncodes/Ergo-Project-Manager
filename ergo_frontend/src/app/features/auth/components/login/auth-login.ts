@@ -35,7 +35,7 @@ export class AuthLogin implements OnInit {
 	}
 
 	navigateToHomePage(): void {
-		this.router.navigate(["/home"]).then((response) => {
+		this.router.navigate(["/layout"]).then((response) => {
 			this.isLoading = false;
 			this.toastr.success("Welcome Back!");
 		});

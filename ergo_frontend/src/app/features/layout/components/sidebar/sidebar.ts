@@ -15,7 +15,7 @@ export class Sidebar {
 		{
 			icon: "bi-house-door-fill",
 			label: "Dashboard",
-			route: "/home/dashboard",
+			route: "/layout/dashboard",
 		},
 	];
 
@@ -23,17 +23,17 @@ export class Sidebar {
 		{
 			icon: "bi-folder-fill",
 			label: "Projects",
-			route: "/home/projects",
+			route: "/layout/projects",
 		},
 		{
 			icon: "bi-people-fill",
 			label: "Members",
-			route: "/home/members",
+			route: "/layout/members",
 		},
 		{
 			icon: "bi-list-task",
 			label: "Tasks",
-			route: "/home/tasks",
+			route: "/layout/tasks",
 		},
 	];
 
@@ -41,7 +41,7 @@ export class Sidebar {
 		{
 			icon: "bi-gear-wide-connected",
 			label: "Settings",
-			route: "/home/settings",
+			route: "/layout/settings",
 		},
 	];
 

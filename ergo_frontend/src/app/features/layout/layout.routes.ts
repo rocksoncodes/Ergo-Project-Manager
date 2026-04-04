@@ -1,7 +1,7 @@
 import { Routes } from "@angular/router";
 import { Layout } from "./components/layout/layout";
 
-export const HOME_ROUTES: Routes = [
+export const LAYOUT_ROUTES: Routes = [
 	{
 		path: "",
 		component: Layout,
