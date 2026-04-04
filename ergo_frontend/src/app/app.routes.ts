@@ -12,7 +12,7 @@ export const routes: Routes = [
 	},
 	{
 		path: "home",
-		loadChildren: () => import("./features/home/home.routes").then((route) => route.HOME_ROUTES),
+		loadChildren: () => import("./features/home/layout.routes").then((route) => route.HOME_ROUTES),
 	},
 	{
 		path: "**",

@@ -23,17 +23,17 @@ export class Sidebar {
 		{
 			icon: "bi-folder-fill",
 			label: "Projects",
-			route: "/projects",
+			route: "/home/projects",
 		},
 		{
 			icon: "bi-people-fill",
 			label: "Members",
-			route: "/members",
+			route: "/home/members",
 		},
 		{
 			icon: "bi-list-task",
 			label: "Tasks",
-			route: "/tasks",
+			route: "/home/tasks",
 		},
 	];
 
