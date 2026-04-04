@@ -1,9 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from "@angular/forms";
 import { RouterLink, Router } from "@angular/router";
 import { AuthService } from "../../services/auth-service";
 import { LoginPayload } from "../../models/auth-models";
 import { ToastrService } from "ngx-toastr";
+import { Subject } from "rxjs";
 
 @Component({
 	selector: "app-login",
@@ -12,9 +13,10 @@ import { ToastrService } from "ngx-toastr";
 	styleUrl: "./auth-login.scss",
 	standalone: true,
 })
-export class AuthLogin implements OnInit {
+export class AuthLogin implements OnInit, OnDestroy {
 	loginForm!: FormGroup;
 	isLoading: boolean = false;
+	private destroy$: Subject<void> = new Subject<void>();
 
 	constructor(
 		private fb: FormBuilder,
@@ -34,7 +36,7 @@ export class AuthLogin implements OnInit {
 		});
 	}
 
-	navigateToHomePage(): void {
+	navigateToDashboard(): void {
 		this.router.navigate(["/layout"]).then((response) => {
 			this.isLoading = false;
 			this.toastr.success("Welcome Back!");
@@ -55,14 +57,22 @@ export class AuthLogin implements OnInit {
 
 		// const request: LoginPayload = this.loginForm.value;
 		//
-		// this.authService.loginUser(request).subscribe({
+		// this.authService.loginUser(request)
+		// .pipe(takeUntil(this.destroy$))
+		// .subscribe({
 		// 	next: () => {
 		// 		this.isLoading = false;
+		//    this.navigateToHomePage()
 		// 	},
 		// 	error: () => {
 		// 		this.isLoading = false;
 		// 	},
 		// });
-		this.navigateToHomePage();
+		this.navigateToDashboard();
+	}
+
+	ngOnDestroy() {
+		this.destroy$.next();
+		this.destroy$.complete();
 	}
 }
