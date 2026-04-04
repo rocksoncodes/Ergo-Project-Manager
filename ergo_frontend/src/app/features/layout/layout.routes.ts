@@ -18,7 +18,8 @@ export const LAYOUT_ROUTES: Routes = [
 			},
 			{
 				path: "projects",
-				loadComponent: () => import("../projects/components/projects").then((child) => child.Projects),
+				loadComponent: () =>
+					import("../projects/components/project-main/projects").then((child) => child.Projects),
 			},
 			{
 				path: "members",

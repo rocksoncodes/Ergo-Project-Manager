@@ -1,8 +1,9 @@
 import { Component } from "@angular/core";
+import { ProjectHeader } from "../project-header/project-header/project-header";
 
 @Component({
 	selector: "app-projects",
-	imports: [],
+	imports: [ProjectHeader],
 	templateUrl: "./projects.html",
 	styleUrl: "./projects.scss",
 })
