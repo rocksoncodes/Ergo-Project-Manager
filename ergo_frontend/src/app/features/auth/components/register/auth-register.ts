@@ -37,7 +37,7 @@ export class AuthRegister implements OnInit {
 	}
 
 	navigateToHomePage(): void {
-		this.router.navigate(["/home"]).then((success) => {
+		this.router.navigate(["/layout"]).then((success) => {
 			if (!success) {
 				this.toastr.error("System failure please try again later");
 			}

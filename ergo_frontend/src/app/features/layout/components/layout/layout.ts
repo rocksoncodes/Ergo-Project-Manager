@@ -4,10 +4,10 @@ import { Sidebar } from "../sidebar/sidebar";
 import { Header } from "../header/header";
 
 @Component({
-	selector: "app-home-layout",
+	selector: "app-layout",
 	imports: [RouterOutlet, Sidebar, Header],
-	templateUrl: "./home-layout.html",
-	styleUrl: "./home-layout.scss",
+	templateUrl: "./layout.html",
+	styleUrl: "./layout.scss",
 	standalone: true,
 })
-export class HomeLayout {}
+export class Layout {}
