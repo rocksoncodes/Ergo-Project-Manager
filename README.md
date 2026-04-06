@@ -20,7 +20,7 @@ A full-stack, comprehensive project management application designed to efficient
 #### Backend Setup
 ```bash
 git clone <repository-url>
-cd Ergo-Project-Manager/ergo_backend
+cd Ergo-Project-Manager/Ergo_Backend
 
 # Create a virtual environment
 python -m venv .venv
@@ -46,7 +46,7 @@ npm install
 
 **1. Run the Backend API:**
 ```bash
-cd ergo_backend
+cd Ergo_Backend
 python main.py
 ```
 *(The backend typically runs on `http://127.0.0.1:5000`)*
