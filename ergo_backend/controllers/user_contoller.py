@@ -1,6 +1,6 @@
 from flask import jsonify, request
-from repositories.user_repository import UserRepository
 
+from repositories.user_repository import UserRepository
 
 class UserController:
     def __init__(self):
@@ -76,12 +76,12 @@ class UserController:
             return jsonify({"error": "User ID is required"}), 400
 
         try:
-           email = self.user_repo.get_user_email(user_id)
+            email = self.user_repo.get_user_email(user_id)
 
-           if not email:
-               return jsonify({"Error":"user email not found"}), 404
+            if not email:
+                return jsonify({"Error": "user email not found"}), 404
 
-           return jsonify(email), 200
+            return jsonify(email), 200
         except Exception:
             return jsonify({"error": "Failed to change user email"}), 500
 

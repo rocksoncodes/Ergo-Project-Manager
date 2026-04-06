@@ -1,6 +1,7 @@
 # Ergo Project Manager - Backend
 
-Robust and scalable Flask-based backend for the Ergo Project Manager application. This service handles project management, task tracking and user authentication using a clean Controller-Repository-Model architecture.
+Robust and scalable Flask-based backend for the Ergo Project Manager application. This service handles project
+management, task tracking and user authentication using a clean Controller-Repository-Model architecture.
 
 ## Tech Stack
 
@@ -83,5 +84,6 @@ The API will be available at `http://localhost:5000` (default Flask port).
 
 ## Development
 
-- **Migrations**: Database tables are automatically created on startup via the `run_migrations` utility in `database/db_utils/database_utils.py`.
+- **Migrations**: Database tables are automatically created on startup via the `run_migrations` utility in
+  `database/db_utils/database_utils.py`.
 - **Debugging**: The application runs with `debug=True` by default in development mode within `main.py`.

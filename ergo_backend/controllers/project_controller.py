@@ -1,9 +1,11 @@
 from flask import jsonify, request
+
 from repositories.project_repository import ProjectRepository
 
 class ProjectController:
     def __init__(self):
         self.project_repo = ProjectRepository()
+
 
     def create_project(self):
         payload = request.get_json()
@@ -19,7 +21,7 @@ class ProjectController:
         except Exception:
             return jsonify({"error": "Failed to create project"}), 500
 
-        return jsonify({"success":"Project created successfully"}), 201
+        return jsonify({"success": "Project created successfully"}), 201
 
 
     def get_project(self, project_id: int):
@@ -54,7 +56,7 @@ class ProjectController:
         if not updated:
             return jsonify({"error": "Project not found"}), 404
 
-        return jsonify({"success":"Project updated successfully"}), 200
+        return jsonify({"success": "Project updated successfully"}), 200
 
 
     def destroy_project(self, project_id: int):

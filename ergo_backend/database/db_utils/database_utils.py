@@ -1,13 +1,14 @@
 from contextlib import contextmanager
-from config.enviroment import DATABASE_URL
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
+
+from config.enviroment import DATABASE_URL
 from utils.logger import logger
 
 engine = create_engine(DATABASE_URL, echo=False)
 Base = declarative_base()
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
-
 
 def run_migrations(models):
     try:
@@ -17,7 +18,6 @@ def run_migrations(models):
         logger.info("Migrations completed successfully")
     except Exception as error:
         raise SystemExit(f"Error initializing the database: {error}")
-
 
 @contextmanager
 def get_session():

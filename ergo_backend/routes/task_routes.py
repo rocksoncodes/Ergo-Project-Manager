@@ -1,9 +1,9 @@
 from flask import Blueprint
+
 from controllers.task_controller import TaskController
 
 task_bp = Blueprint("tasks", __name__, url_prefix="/tasks")
 task_controller = TaskController()
-
 
 @task_bp.route("/create-task", methods=["POST"])
 def create_task():

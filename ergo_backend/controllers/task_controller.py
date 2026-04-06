@@ -1,9 +1,11 @@
 from flask import jsonify, request
+
 from repositories.task_repository import TaskRepository
 
 class TaskController:
     def __init__(self):
         self.task_repo = TaskRepository()
+
 
     def create_task(self):
         payload = request.get_json()
@@ -12,7 +14,8 @@ class TaskController:
             return jsonify({"error": "Invalid payload"}), 400
 
         if "description" and "title" not in payload:
-            return jsonify({"error": "Task title & description is required"}), 400
+            return jsonify(
+                {"error": "Task title & description is required"}), 400
 
         try:
             self.task_repo.create_task(payload)

@@ -1,9 +1,9 @@
 from flask import Blueprint
+
 from controllers.user_contoller import UserController
 
 user_bp = Blueprint("user", __name__, url_prefix="/users")
 user_controller = UserController()
-
 
 @user_bp.route("/create-user-account", methods=["POST"])
 def create_user_account():
