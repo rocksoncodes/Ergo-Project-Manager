@@ -37,7 +37,7 @@ ergo_backend/
 
 1. **Navigate to the backend directory**:
    ```bash
-   cd ergo_backend
+   cd Ergo_Backend
    ```
 
 2. **Create and activate a virtual environment**:
