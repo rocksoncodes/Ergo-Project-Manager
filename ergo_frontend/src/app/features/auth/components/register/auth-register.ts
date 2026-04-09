@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { RouterLink, Router } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import { AuthService } from "../../services/auth-service";
 import { ToastrService } from "ngx-toastr";
-import { RegisterPayload } from "../../models/auth-models";
 
 @Component({
 	selector: "app-register",

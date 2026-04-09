@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Text, Boolean, Integer
-from database.db_utils.database_utils import Base
 
+from database.db_utils.database_utils import Base
 
 class Task(Base):
     __tablename__ = "tasks"

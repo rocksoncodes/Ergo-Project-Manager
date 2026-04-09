@@ -1,99 +1,99 @@
 <aside class="sidebar min-vh-100 d-flex flex-column bg-white border-end" [class.collapsed]="isCollapsed">
-	<!--::begin Branding -->
-	<div class="sidebar-brand-wrapper position-relative px-3 py-3">
-		<div class="sidebar-brand d-flex align-items-center gap-2">
-			<i class="bi bi-lightning-charge-fill text-primary fs-4"></i>
-			@if (!isCollapsed) {
-			<h5 class="brand-name fw-bold mb-0 text-dark">Ergo</h5>
-			}
-		</div>
+  <!--::begin Branding -->
+  <div class="sidebar-brand-wrapper position-relative px-3 py-3">
+    <div class="sidebar-brand d-flex align-items-center gap-2">
+      <i class="bi bi-lightning-charge-fill text-primary fs-4"></i>
+      @if (!isCollapsed) {
+        <h5 class="brand-name fw-bold mb-0 text-dark">Ergo</h5>
+      }
+    </div>
 
-		<!-- Hover-to-Show Toggle -->
-		<button
-			class="btn toggle-btn btn-primary border-0 shadow-none position-absolute"
-			[class.expanded]="!isCollapsed"
-			(click)="toggleCollapse()"
-			[title]="isCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'">
-			<i
-				class="bi"
-				[ngClass]="isCollapsed ? 'bi-arrow-right-circle-fill' : 'bi-arrow-left-circle-fill'"
-				style="font-size: 1.5rem"></i>
-		</button>
-	</div>
-	<!--::end Branding -->
+    <!-- Hover-to-Show Toggle -->
+    <button
+      class="btn toggle-btn btn-primary border-0 shadow-none position-absolute"
+      [class.expanded]="!isCollapsed"
+      (click)="toggleCollapse()"
+      [title]="isCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'">
+      <i
+        class="bi"
+        [ngClass]="isCollapsed ? 'bi-arrow-right-circle-fill' : 'bi-arrow-left-circle-fill'"
+        style="font-size: 1.5rem"></i>
+    </button>
+  </div>
+  <!--::end Branding -->
 
-	<hr class="mx-3 my-0 mb-3" />
+  <hr class="mx-3 my-0 mb-3"/>
 
-	<!--::begin Overview Nav links -->
-	<div class="d-flex flex-column gap-4 px-3">
-		<nav>
-			@if (!isCollapsed) {
-			<small class="text-muted fw-semibold text-uppercase d-block mb-1" style="font-size: 0.7rem">Overview</small>
-			}
-			<ul class="nav flex-column">
-				@for (item of navOverviewItems; track item.route) {
-				<li class="nav-item">
-					<a
-						class="nav-link sidebar-link d-flex align-items-center gap-2 rounded text-muted"
-						[routerLink]="item.route"
-						routerLinkActive="active">
-						<i class="bi {{ item.icon }} fs-5"></i>
-						@if (!isCollapsed) {
-						<span class="link-label">{{ item.label }}</span>
-						}
-					</a>
-				</li>
-				}
-			</ul>
-		</nav>
-		<!--::end Overview Nav links -->
+  <!--::begin Overview Nav links -->
+  <div class="d-flex flex-column gap-4 px-3">
+    <nav>
+      @if (!isCollapsed) {
+        <small class="text-muted fw-semibold text-uppercase d-block mb-1" style="font-size: 0.7rem">Overview</small>
+      }
+      <ul class="nav flex-column">
+        @for (item of navOverviewItems; track item.route) {
+          <li class="nav-item">
+            <a
+              class="nav-link sidebar-link d-flex align-items-center gap-2 rounded text-muted"
+              [routerLink]="item.route"
+              routerLinkActive="active">
+              <i class="bi {{ item.icon }} fs-5"></i>
+              @if (!isCollapsed) {
+                <span class="link-label">{{ item.label }}</span>
+              }
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+    <!--::end Overview Nav links -->
 
-		<!--::begin General Nav links -->
-		<nav>
-			@if (!isCollapsed) {
-			<small class="text-muted fw-semibold text-uppercase d-block mb-1" style="font-size: 0.7rem">General</small>
-			}
-			<ul class="nav flex-column">
-				@for (item of navGeneralItems; track item.route) {
-				<li class="nav-item">
-					<a
-						class="nav-link sidebar-link d-flex align-items-center gap-2 rounded text-muted"
-						[routerLink]="item.route"
-						routerLinkActive="active">
-						<i class="bi {{ item.icon }} fs-5"></i>
-						@if (!isCollapsed) {
-						<span class="link-label">{{ item.label }}</span>
-						}
-					</a>
-				</li>
-				}
-			</ul>
-		</nav>
-		<!--::end General Nav links -->
+    <!--::begin General Nav links -->
+    <nav>
+      @if (!isCollapsed) {
+        <small class="text-muted fw-semibold text-uppercase d-block mb-1" style="font-size: 0.7rem">General</small>
+      }
+      <ul class="nav flex-column">
+        @for (item of navGeneralItems; track item.route) {
+          <li class="nav-item">
+            <a
+              class="nav-link sidebar-link d-flex align-items-center gap-2 rounded text-muted"
+              [routerLink]="item.route"
+              routerLinkActive="active">
+              <i class="bi {{ item.icon }} fs-5"></i>
+              @if (!isCollapsed) {
+                <span class="link-label">{{ item.label }}</span>
+              }
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+    <!--::end General Nav links -->
 
-		<!--::begin Management Nav links -->
-		<nav>
-			@if (!isCollapsed) {
-			<small class="text-muted fw-semibold text-uppercase d-block mb-1" style="font-size: 0.7rem">
-				Management
-			</small>
-			}
-			<ul class="nav flex-column">
-				@for (item of navManagementItems; track item.route) {
-				<li class="nav-item">
-					<a
-						class="nav-link sidebar-link d-flex align-items-center gap-2 rounded text-muted"
-						[routerLink]="item.route"
-						routerLinkActive="active">
-						<i class="bi {{ item.icon }} fs-5"></i>
-						@if (!isCollapsed) {
-						<span class="link-label">{{ item.label }}</span>
-						}
-					</a>
-				</li>
-				}
-			</ul>
-		</nav>
-		<!--::end Management Nav links -->
-	</div>
+    <!--::begin Management Nav links -->
+    <nav>
+      @if (!isCollapsed) {
+        <small class="text-muted fw-semibold text-uppercase d-block mb-1" style="font-size: 0.7rem">
+          Management
+        </small>
+      }
+      <ul class="nav flex-column">
+        @for (item of navManagementItems; track item.route) {
+          <li class="nav-item">
+            <a
+              class="nav-link sidebar-link d-flex align-items-center gap-2 rounded text-muted"
+              [routerLink]="item.route"
+              routerLinkActive="active">
+              <i class="bi {{ item.icon }} fs-5"></i>
+              @if (!isCollapsed) {
+                <span class="link-label">{{ item.label }}</span>
+              }
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+    <!--::end Management Nav links -->
+  </div>
 </aside>

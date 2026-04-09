@@ -1,5 +1,6 @@
-from database.db_utils.database_utils import get_session
 from typing import Dict, List
+
+from database.db_utils.database_utils import get_session
 from models.task import Task
 from utils.logger import logger
 
@@ -8,11 +9,11 @@ class TaskRepository:
     def create_task(self, task_details: Dict) -> None:
         try:
             with get_session() as task_session:
-                new_task = Task (
-                    title = task_details["title"],
-                    description = task_details["description"],
-                    status = task_details["status"],
-                    is_completed = task_details["is_completed"]
+                new_task = Task(
+                    title=task_details["title"],
+                    description=task_details["description"],
+                    status=task_details["status"],
+                    is_completed=task_details["is_completed"]
                 )
                 task_session.add(new_task)
         except Exception as error:
@@ -22,7 +23,8 @@ class TaskRepository:
     def get_task(self, task_id: int) -> Dict | None:
         try:
             with get_session() as task_session:
-                specific_task = task_session.query(Task).filter(Task.id == task_id).first()
+                specific_task = task_session.query(Task).filter(
+                    Task.id == task_id).first()
                 if specific_task is None:
                     return None
                 return {
@@ -56,7 +58,8 @@ class TaskRepository:
     def update_task(self, task_id: int, new_task_data: Dict) -> bool:
         try:
             with get_session() as task_session:
-                task = task_session.query(Task).filter(Task.id == task_id).first()
+                task = task_session.query(Task).filter(
+                    Task.id == task_id).first()
                 if task is None:
                     logger.warning(f"Task {task_id} not found")
                     return False
@@ -77,7 +80,8 @@ class TaskRepository:
     def destroy_task(self, task_id: int) -> bool:
         try:
             with get_session() as task_session:
-                specific_task = task_session.query(Task).filter(Task.id == task_id).first()
+                specific_task = task_session.query(Task).filter(
+                    Task.id == task_id).first()
                 if not specific_task:
                     logger.warning(f"Task {task_id} not found!")
                     return False

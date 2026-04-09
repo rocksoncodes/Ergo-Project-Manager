@@ -5,8 +5,8 @@ from sqlalchemy import (
     Text,
     ForeignKey
 )
-from database.db_utils.database_utils import Base
 
+from database.db_utils.database_utils import Base
 
 class Project(Base):
     __tablename__ = "projects"

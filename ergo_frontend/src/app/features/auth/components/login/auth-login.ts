@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from "@angular/forms";
-import { RouterLink, Router } from "@angular/router";
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { Router, RouterLink } from "@angular/router";
 import { AuthService } from "../../services/auth-service";
-import { LoginPayload } from "../../models/auth-models";
 import { ToastrService } from "ngx-toastr";
 import { Subject } from "rxjs";
 

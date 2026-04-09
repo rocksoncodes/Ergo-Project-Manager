@@ -1,9 +1,10 @@
-from database.db_utils.database_utils import get_session
 from typing import Dict
-from models.user import User
-from utils.logger import logger
+
 from werkzeug.security import generate_password_hash, check_password_hash
 
+from database.db_utils.database_utils import get_session
+from models.user import User
+from utils.logger import logger
 
 class UserRepository:
 
@@ -11,10 +12,11 @@ class UserRepository:
         try:
             with get_session() as user_session:
                 new_user = User(
-                    first_name = user_details["firstname"],
+                    first_name=user_details["firstname"],
                     last_name=user_details["lastname"],
-                    email = user_details["email"],
-                    password = generate_password_hash(user_details["password"], salt_length=7)
+                    email=user_details["email"],
+                    password=generate_password_hash(user_details["password"],
+                                                    salt_length=7)
                 )
                 user_session.add(new_user)
         except Exception as error:
@@ -25,7 +27,8 @@ class UserRepository:
     def get_user_account(self, user_id: int) -> Dict | None:
         try:
             with get_session() as user_session:
-                user_account = user_session.query(User).filter(User.id == user_id).first()
+                user_account = user_session.query(User).filter(
+                    User.id == user_id).first()
                 if user_account is None:
                     logger.warning("User account not found")
                     return None
@@ -40,10 +43,12 @@ class UserRepository:
             raise
 
 
-    def update_user_account(self, user_id: int, new_account_data: Dict) -> bool:
+    def update_user_account(self, user_id: int,
+                            new_account_data: Dict) -> bool:
         try:
             with get_session() as user_session:
-                user_account = user_session.query(User).filter(User.id == user_id).first()
+                user_account = user_session.query(User).filter(
+                    User.id == user_id).first()
                 if user_account is None:
                     logger.warning(f"User account not found!")
                     return False
@@ -57,15 +62,19 @@ class UserRepository:
             raise
 
 
-    def change_user_password(self, user_id: int, current_password: str, new_password: str) -> bool:
+    def change_user_password(self, user_id: int, current_password: str,
+                             new_password: str) -> bool:
         try:
             with get_session() as user_session:
-                user_account = user_session.query(User).filter(User.id == user_id).first()
+                user_account = user_session.query(User).filter(
+                    User.id == user_id).first()
                 if user_account is None:
                     logger.warning(f"User {user_id} not found")
                     return False
-                if not check_password_hash(user_account.password, current_password):
-                    logger.warning(f"Incorrect current password for user {user_id}")
+                if not check_password_hash(user_account.password,
+                                           current_password):
+                    logger.warning(
+                        f"Incorrect current password for user {user_id}")
                     return False
                 user_account.password = generate_password_hash(new_password)
                 return True
@@ -77,7 +86,8 @@ class UserRepository:
     def get_user_email(self, user_id: int) -> Dict | None:
         try:
             with get_session() as user_session:
-                user_email = user_session.query(User).filter(User.id == user_id).first()
+                user_email = user_session.query(User).filter(
+                    User.id == user_id).first()
                 if user_email is None:
                     return None
                 return {
@@ -91,7 +101,8 @@ class UserRepository:
     def destroy_user_account(self, user_id: int) -> bool:
         try:
             with get_session() as user_session:
-                user_account = user_session.query(User).filter(User.id == user_id).first()
+                user_account = user_session.query(User).filter(
+                    User.id == user_id).first()
                 if user_account is None:
                     logger.warning(f"User account not found!")
                     return False

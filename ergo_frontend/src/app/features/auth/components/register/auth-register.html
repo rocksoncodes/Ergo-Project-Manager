@@ -1,93 +1,102 @@
 <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
-	<!--::begin Header Text  -->
-	<div class="">
-		<h3 class="display-5 fw-bold">Welcome To Ergo!</h3>
-		<p class="fw-normal text-muted">A home for every project you and your team are juggling.</p>
-	</div>
-	<!--::end Header Text  -->
+  <!--::begin Header Text  -->
+  <div class="">
+    <h3 class="display-5 fw-bold">Welcome To Ergo!</h3>
+    <p class="fw-normal text-muted">A home for every project you and your team are juggling.</p>
+  </div>
+  <!--::end Header Text  -->
 
-	<div class="d-flex gap-2 mb-3">
-		<!--::begin First name  -->
-		<div class="d-flex flex-column gap-2 flex-grow-1">
-			<label class="fw-medium">First name</label>
-			<input type="text" class="form-control border-2 p-2 mw-100" formControlName="firstname" placeholder="First name" />
-			@if (form["firstname"].touched && form["firstname"].invalid) { @if (form["firstname"].errors &&
-			form["firstname"].errors["required"]) {
-			<span class="text-danger">First name is required</span>
-			} }
-		</div>
-		<!--::end First name  -->
+  <div class="d-flex gap-2 mb-3">
+    <!--::begin First name  -->
+    <div class="d-flex flex-column gap-2 flex-grow-1">
+      <label class="fw-medium">First name</label>
+      <input type="text" class="form-control border-2 p-2 mw-100" formControlName="firstname" placeholder="First name"/>
+      @if (form["firstname"].touched && form["firstname"].invalid) {
+        @if (form["firstname"].errors &&
+        form["firstname"].errors["required"]) {
+          <span class="text-danger">First name is required</span>
+        }
+      }
+    </div>
+    <!--::end First name  -->
 
-		<!--::begin Last name  -->
-		<div class="d-flex flex-column gap-2 flex-grow-1">
-			<label class="fw-medium">Last name</label>
-			<input type="text" class="form-control border-2 p-2" formControlName="lastname" placeholder="Last name" />
-			@if (form["lastname"].touched && form["lastname"].invalid) { @if (form["lastname"].errors &&
-			form["lastname"].errors["required"]) {
-			<span class="text-danger">Last name is required</span>
-			} }
-		</div>
-		<!--::end Last name  -->
-	</div>
+    <!--::begin Last name  -->
+    <div class="d-flex flex-column gap-2 flex-grow-1">
+      <label class="fw-medium">Last name</label>
+      <input type="text" class="form-control border-2 p-2" formControlName="lastname" placeholder="Last name"/>
+      @if (form["lastname"].touched && form["lastname"].invalid) {
+        @if (form["lastname"].errors &&
+        form["lastname"].errors["required"]) {
+          <span class="text-danger">Last name is required</span>
+        }
+      }
+    </div>
+    <!--::end Last name  -->
+  </div>
 
-	<!--::begin Email  -->
-	<div class="d-flex flex-column gap-2 mb-3">
-		<label class="fw-medium">Email</label>
-		<input type="email" class="form-control border-2 p-2" formControlName="email" placeholder="User email" />
-		@if (form["email"].touched && form["email"].invalid) { @if (form["email"].errors &&
-		form["email"].errors["required"]) {
-		<span class="text-danger">Email is required</span>
-		} }
-	</div>
-	<!--::end Email  -->
+  <!--::begin Email  -->
+  <div class="d-flex flex-column gap-2 mb-3">
+    <label class="fw-medium">Email</label>
+    <input type="email" class="form-control border-2 p-2" formControlName="email" placeholder="User email"/>
+    @if (form["email"].touched && form["email"].invalid) {
+      @if (form["email"].errors &&
+      form["email"].errors["required"]) {
+        <span class="text-danger">Email is required</span>
+      }
+    }
+  </div>
+  <!--::end Email  -->
 
-	<!--::begin Password  -->
-	<div class="d-flex flex-column gap-2 mb-3">
-		<label class="fw-medium">Password</label>
-		<input
-			type="password"
-			class="form-control border-2 p-2"
-			formControlName="password"
-			placeholder="User password" />
-		@if (form["password"].touched && form["password"].invalid) { @if (form["password"].errors &&
-		form["password"].errors["required"]) {
-		<span class="text-danger">Password is required</span>
-		} }
-	</div>
-	<!--::end Password  -->
+  <!--::begin Password  -->
+  <div class="d-flex flex-column gap-2 mb-3">
+    <label class="fw-medium">Password</label>
+    <input
+      type="password"
+      class="form-control border-2 p-2"
+      formControlName="password"
+      placeholder="User password"/>
+    @if (form["password"].touched && form["password"].invalid) {
+      @if (form["password"].errors &&
+      form["password"].errors["required"]) {
+        <span class="text-danger">Password is required</span>
+      }
+    }
+  </div>
+  <!--::end Password  -->
 
-	<!--::begin Sign In  -->
-	<div class="mt-4">
-		<button
-			type="submit"
-			[disabled]=" registerForm.invalid || isLoading"
-			class="btn btn-primary w-100 p-2 fw-medium shadow-sm">
-			@if (!isLoading) {
-			<span>SIGN IN</span>
-			} @if (isLoading) {
-			<span>
+  <!--::begin Sign In  -->
+  <div class="mt-4">
+    <button
+      type="submit"
+      [disabled]=" registerForm.invalid || isLoading"
+      class="btn btn-primary w-100 p-2 fw-medium shadow-sm">
+      @if (!isLoading) {
+        <span>SIGN IN</span>
+      }
+      @if (isLoading) {
+        <span>
 				<span class="spinner-border spinner-border-sm align-middle ms-2"></span>
 				SIGNING IN...
 			</span>
-			}
-		</button>
-	</div>
-	<!--::end Sign In -->
+      }
+    </button>
+  </div>
+  <!--::end Sign In -->
 
-	<!--::begin  Sign Up Option  -->
-	<div class="d-flex flex-row gap-1 justify-content-center mt-md-4">
-		<p class="text-muted p-0">Already have an account?</p>
-		<a routerLink="/auth/login" class="link-primary link-underline-opacity-0">Sign in here</a>
-	</div>
-	<!--::end  Sign Up Option  -->
+  <!--::begin  Sign Up Option  -->
+  <div class="d-flex flex-row gap-1 justify-content-center mt-md-4">
+    <p class="text-muted p-0">Already have an account?</p>
+    <a routerLink="/auth/login" class="link-primary link-underline-opacity-0">Sign in here</a>
+  </div>
+  <!--::end  Sign Up Option  -->
 
-	<!--::begin Google Sign In  -->
-	<div class="mt-2">
-		<button
-			class="d-flex gap-3 justify-content-center btn btn-secondary w-100 p-2 fw-medium bg-white border-secondary-subtle shadow-sm">
-			<img src="/google-icon.png" class="img-fluid" style="width: 30px; height: 30px" alt="google-icon" />
-			<span class="text-black">Sign up with google</span>
-		</button>
-	</div>
-	<!--::end Google Sign In -->
+  <!--::begin Google Sign In  -->
+  <div class="mt-2">
+    <button
+      class="d-flex gap-3 justify-content-center btn btn-secondary w-100 p-2 fw-medium bg-white border-secondary-subtle shadow-sm">
+      <img src="/google-icon.png" class="img-fluid" style="width: 30px; height: 30px" alt="google-icon"/>
+      <span class="text-black">Sign up with google</span>
+    </button>
+  </div>
+  <!--::end Google Sign In -->
 </form>

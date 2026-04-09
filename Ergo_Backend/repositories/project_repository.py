@@ -1,6 +1,7 @@
+from typing import Dict, List
+
 from database.db_utils.database_utils import get_session
 from models.project import Project
-from typing import  Dict, List
 from utils.logger import logger
 
 class ProjectRepository:
@@ -9,9 +10,9 @@ class ProjectRepository:
         try:
             with get_session() as project_session:
                 new_project = Project(
-                    title = new_project_data["title"],
-                    description = new_project_data["description"],
-                    owner_id = new_project_data["owner_id"],
+                    title=new_project_data["title"],
+                    description=new_project_data["description"],
+                    owner_id=new_project_data["owner_id"],
                 )
                 project_session.add(new_project)
         except Exception as error:
@@ -22,7 +23,8 @@ class ProjectRepository:
     def get_project(self, project_id: int) -> Dict | None:
         try:
             with get_session() as project_session:
-                specific_project = project_session.query(Project).filter(Project.id == project_id).first()
+                specific_project = project_session.query(Project).filter(
+                    Project.id == project_id).first()
                 if not specific_project:
                     return None
                 return {
@@ -60,7 +62,8 @@ class ProjectRepository:
     def update_project(self, project_id: int, new_project_data: Dict) -> bool:
         try:
             with get_session() as project_session:
-                project = project_session.query(Project).filter(Project.id == project_id).first()
+                project = project_session.query(Project).filter(
+                    Project.id == project_id).first()
                 if not project:
                     logger.warning(f"Project {project_id} not found")
                     return False
@@ -77,7 +80,8 @@ class ProjectRepository:
     def destroy_project(self, project_id: int) -> bool:
         try:
             with get_session() as project_session:
-                specific_project = project_session.query(Project).filter(Project.id == project_id).first()
+                specific_project = project_session.query(Project).filter(
+                    Project.id == project_id).first()
                 if not specific_project:
                     logger.warning(f"Project {project_id} not found")
                     return False

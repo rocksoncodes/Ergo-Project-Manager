@@ -1,8 +1,7 @@
 from database.db_utils.database_utils import run_migrations
+from models.project import Base as ProjectBase
 from models.task import Base as UserBase
 from models.user import Base as TaskBase
-from models.project import Base as ProjectBase
-
 
 models = {
     "User": UserBase,
