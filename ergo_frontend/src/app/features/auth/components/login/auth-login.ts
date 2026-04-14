@@ -61,7 +61,7 @@ export class AuthLogin implements OnInit, OnDestroy {
 		// .subscribe({
 		// 	next: () => {
 		// 		this.isLoading = false;
-		//    this.navigateToHomePage()
+		//    this.navigateToDashboard()
 		// 	},
 		// 	error: () => {
 		// 		this.isLoading = false;
