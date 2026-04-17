@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { ProjectHeader } from "../project-header/project-header/project-header";
+import { ProjectHeader } from "../project-header/project-header";
 
 @Component({
 	selector: "app-projects",
